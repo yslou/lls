@@ -1,0 +1,18 @@
+
+AUTO=auto-gen.go
+
+.PHONY: gen deply all clean
+all: gen
+	dev_appserver.py app.yaml
+
+gen:
+	go generate
+#	rm -f $(AUTO)
+#	go-bindata-assetfs -pkg server -o $(AUTO) www/
+
+deploy: gen
+	gcloud deploy app.yam
+	
+clean:
+	rm -rf $(AUTO)
+

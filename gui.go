@@ -6,6 +6,8 @@ import (
     "encoding/json"
 )
 
+//go:generate go-bindata-assetfs -pkg server www/
+
 var (
     Stop = make(chan int)
 )
