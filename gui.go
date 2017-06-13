@@ -1,27 +1,27 @@
 package server
 
 import (
-    "net/http"
-    "fmt"
-    "encoding/json"
+	"encoding/json"
+	"fmt"
+	"net/http"
 )
 
 //go:generate go-bindata-assetfs -pkg server www/
 
-func init_gui() {
-    mux := http.NewServeMux()
-    mux.HandleFunc("/api", handler)
-    mux.Handle("/", http.FileServer(assetFS()))
+func initGui() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api", handler)
+	mux.Handle("/", http.FileServer(assetFS()))
 
-    http.Handle("/", mux)
+	http.Handle("/", mux)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-    //w.Write([]byte("{hello!!}"))
-    fmt.Fprint(w, "{ Hello, world! }")
+	//w.Write([]byte("{hello!!}"))
+	fmt.Fprint(w, "{ Hello, world! }")
 }
 
 func httpSendJSON(w http.ResponseWriter, v interface{}) {
-    w.Header().Set("Content-Type", "application/json; charset=utf-8")
-    json.NewEncoder(w).Encode(v)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	json.NewEncoder(w).Encode(v)
 }

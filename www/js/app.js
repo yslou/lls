@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Example</title>
-    <meta charset='utf-8' />
-  </head>
-  <body>
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize-button" style="display: none;">Get File List</button>
-    <div id="content"></div>
-
-    <script type="text/javascript">
-      // Client ID and API key from the Developer Console
+// Client ID and API key from the Developer Console
       var CLIENT_ID = '369661483799-4p5dv4gbnngfuh8ce8brfc3a03ucmbp5.apps.googleusercontent.com';
 
       // Array of API discovery doc URLs for APIs
@@ -30,7 +18,7 @@
       if (!String.prototype.fmt) {
         String.prototype.fmt = function() {
           var args = arguments;
-          return this.replace(/{(\d+)}/g, function(match, number) {
+          return this.replace(/{(\d+)}/g, function(match, number) { 
             return typeof args[number] != 'undefined'
               ? args[number]
               : match;
@@ -71,16 +59,3 @@
       function handleClientLoad() {
         gapi.load('client', start);
       }
-    </script>
-
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-      crossorigin="anonymous">
-    </script>
-  </body>
-</html>

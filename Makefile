@@ -11,7 +11,7 @@ gen:
 #	go-bindata-assetfs -pkg server -o $(AUTO) www/
 
 deploy: gen
-	gcloud deploy app.yam
+	gcloud app deploy
 	
 clean:
 	rm -rf $(AUTO)
