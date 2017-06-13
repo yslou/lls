@@ -1,5 +1,5 @@
 
-AUTO=auto-gen.go
+AUTO=bindata_assetfs.go
 
 .PHONY: gen deply all clean
 all: gen

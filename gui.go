@@ -8,17 +8,12 @@ import (
 
 //go:generate go-bindata-assetfs -pkg server www/
 
-var (
-    Stop = make(chan int)
-)
-
 func init_gui() {
     mux := http.NewServeMux()
     mux.HandleFunc("/api", handler)
     mux.Handle("/", http.FileServer(assetFS()))
 
     http.Handle("/", mux)
-//    <- Stop
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

@@ -32,18 +32,22 @@
         var request = gapi.client.drive.files.get({
           'fileId': '0B69rc32vOTFYSWdEUE1SMXRhUlU'
         });
-
         request.execute(function(resp) {
-                //listFiles(f);
-                console.log("resp=" + resp);
+                console.log(resp);
         });
 
+        gapi.client.drive.files.list({
+          'q': '\'0B69rc32vOTFYSWdEUE1SMXRhUlU\' in parents'
+        }).then(function (resp) {
+          console.log(resp);
+        })
       }
 
       function start() {
         gapi.client.init({
-            //discoveryDocs: DISCOVERY_DOCS,
-            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            //clientId: CLIENT_ID,
+            apiKey: 'AIzaSyAwoMfos7xofe0d6u1sMoeGXVfNNQrtoSc',
             scope: SCOPES
         }).then(function () {
             authorizeButton.style.display = 'block';
@@ -54,7 +58,7 @@
        *  On load, called to load the auth2 library and API client library.
        */
       function handleClientLoad() {
-        gapi.load('client:auth2', start);
+        gapi.load('client', start);
       }
 
       /**
