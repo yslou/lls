@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-//go:generate go-bindata-assetfs -pkg server www/
+//go:generate go-bindata-assetfs -pkg server www/...
 
 func initGui() {
 	mux := http.NewServeMux()
