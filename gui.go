@@ -11,7 +11,8 @@ import (
 func initGui() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api", handler)
-	mux.Handle("/", http.FileServer(assetFS()))
+	// mux.Handle("/", http.FileServer(assetFS()))
+	mux.Handle("/", http.FileServer(http.Dir("www")))
 
 	http.Handle("/", mux)
 }
